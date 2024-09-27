@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo Items</title>
+</head>
+<body>
+
+    <div>
+        <a href="{% url 'todoapp:add_todo_view' %}">
+            <button>Add Item</button>
+        </a>
+        <table>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Completed</th>
+            </tr>
+            {% for todo in todos %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{todo.name}}</td>
+                <td>{{todo.date_added}}</td>
+                <td>{{todo.completed}}</td>
+                <td><a href="{% url 'todoapp:update_todo_view' todo.id %}"><button style="background-color: green;">Update</button></a></td>
+                <td><a href="{% url 'todoapp:delete_todo_view' todo.id %}"><button style="background-color: red;">Delete</button></a></td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+</body>
+</html>

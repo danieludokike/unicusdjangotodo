@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Todo</title>
+</head>
+<body>
+    <form action="{% url 'todoapp:add_todo_view' %}" method="post">
+        <label>Add an Item</label>
+        {% csrf_token %}
+        {% for msg in messages %}
+            <div>{{msg}}</div>
+        {% endfor %}
+        <input type="text" name="item" id="">
+        <button type="submit">Add</button>
+    </form>
+</body>
+</html>
